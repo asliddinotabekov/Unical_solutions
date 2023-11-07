@@ -24,53 +24,53 @@
 // 3	(]	NO
 
 
-function areBracketsBalanced(expr) {
+function Brackets(char) {
     console.log()
-    let stack = [];
+    let store = [];
 
-    for (let i = 0; i < expr.length; i++) {
-        let x = expr[i];
+    for (let i = 0; i < char.length; i++) {
+        let x = char[i];
 
         if (x == '(' || x == '[' || x == '{') {
-            stack.push(x);
+            store.push(x);
         }
 
-        if (stack.length == 0)
+        if (store.length == 0)
             return false;
 
         let check;
         switch (x) {
             case ')':
-                check = stack.pop();
+                check = store.pop();
                 if (check == '{' || check == '[')
                     return false;
                 break;
 
             case '}':
-                check = stack.pop();
+                check = store.pop();
                 if (check == '(' || check == '[')
                     return false;
                 break;
 
             case ']':
-                check = stack.pop();
+                check = store.pop();
                 if (check == '(' || check == '{')
                     return false;
                 break;
         }
     }
-    console.log(expr);
-    if (!expr) {
-        console.log(!Boolean(expr))
+    console.log(char);
+    if (!char) {
+        console.log(!Boolean(char))
         return false
     } else {
-        return (stack.length == 0);
+        return (store.length == 0);
     }
 }
 
-let expr = prompt("Satr yaroqli !!!!!")
+let char = prompt("Satr yaroqli !!!!!")
 
-if (areBracketsBalanced(expr))
+if (Brackets(char))
     document.write("Yes");
 else
     document.write("No");
